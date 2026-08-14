@@ -368,8 +368,10 @@
   <section id="abstract">
     <p class="sec-num">Abstract</p>
     <p class="lede">
-      Given limited review capacity, which underperforming search pages should a content team
-      look at first? I built a two-signal ranking rule from validated evidence, trained a random
+      FlyRank's content teams already use hand-written flags — like the CTR-fix and refresh
+      flags — to catch underperforming pages, but those flags' assumptions had never been tested
+      against real data. Given limited review capacity, which underperforming search pages
+      should a content team look at first, and do the flags they already rely on actually hold? I built a two-signal ranking rule from validated evidence, trained a random
       forest on the same features, and compared both under a client-grouped holdout — the honest
       test, where no client appears in both training and evaluation. The simple rule won:
       Precision@50 of 0.86 versus the model's 0.76. An earlier in-sample comparison had shown the
@@ -416,6 +418,18 @@
       one page. The output is a ranked queue with a reason code per page, intended as
       decision-support for a human reviewer — not an autonomous system that edits or publishes
       anything on its own.
+    </p>
+
+    <h3>The real case study this comes from</h3>
+    <p>
+      FlyRank already runs a workflow flag system for exactly this problem — rules like the
+      CTR-fix flag (comparing a page's click-through rate against its own position tier) and
+      refresh flags (surfacing pages that may be stale). Those flags were the starting point for
+      this capstone, not an afterthought: rather than assume the assumptions behind them were
+      correct, this paper tests them directly against real search data, keeps what the data
+      supports, and narrows what it doesn't. The result is a validated, evidence-backed version
+      of the same reviewer-facing workflow FlyRank's flags already serve — with the added step of
+      showing, honestly, where a plain rule still beats a more complex model.
     </p>
   </section>
 
